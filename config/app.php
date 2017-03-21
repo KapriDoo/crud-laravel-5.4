@@ -171,11 +171,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Rimorsoft\Providers\AppServiceProvider::class,
+        Rimorsoft\Providers\AuthServiceProvider::class,
+        // Rimorsoft\Providers\BroadcastServiceProvider::class,
+        Rimorsoft\Providers\EventServiceProvider::class,
+        Rimorsoft\Providers\RouteServiceProvider::class,
 
     ],
 
