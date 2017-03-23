@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
 
             $table->string('name');
-            $table->mediumText('short');
+            $table->mediumText('short')->nullable();
             $table->text('body');
 
             $table->timestamps();

@@ -2,7 +2,11 @@
 
 @section('content')
 	<div class="col-xs-12 col-sm-8">
-		<h2>Lista de productos</h2>
+		<h2>
+			Lista de productos
+			<a href="{{ route('products.create') }}" class="btn btn-primary pull-right">Nuevo</a>
+		</h2>
+		<hr>
 		<table class="table table-hover table-striped">
 			<thead>
 				<tr>
@@ -39,8 +43,6 @@
 		{!! $products->render() !!}
 	</div>
 	<div class="col-xs-12 col-sm-4">
-		<p class="alert alert-info">
-			is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-		</p>
+		@include('products.partials.aside')
 	</div>
 @endsection
