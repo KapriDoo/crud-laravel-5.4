@@ -3,6 +3,7 @@
 namespace Rimorsoft\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Rimorsoft\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -33,7 +34,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $product = new \Rimorsoft\Product;
 
@@ -54,7 +55,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = \Rimorsoft\Product::find($id);
+        
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -65,7 +68,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = \Rimorsoft\Product::find($id);
+        
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -75,9 +80,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        //
+        $product = \Rimorsoft\Product::find($id);
+
+        $product->name  = $request->name;
+        $product->short = $request->short;
+        $product->body  = $request->body;
+
+        $product->save();
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -90,6 +103,6 @@ class ProductController extends Controller
     {
         $product = \Rimorsoft\Product::find($id);
         $product->delete();
-        return back();
+        return back()->with('info', 'Fue eliminado exitosamente');
     }
 }

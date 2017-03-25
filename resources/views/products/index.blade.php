@@ -7,6 +7,7 @@
 			<a href="{{ route('products.create') }}" class="btn btn-primary pull-right">Nuevo</a>
 		</h2>
 		<hr>
+		@include('products.partials.info')
 		<table class="table table-hover table-striped">
 			<thead>
 				<tr>
@@ -23,9 +24,13 @@
 						<strong>{{ $product->name }}</strong>
 						{{ $product->short }}
 					</td>
-					<td width="20px">Ver</td>
 					<td width="20px">
-						<a href="#" class="btn btn-link">
+						<a href="{{ route('products.show', $product->id) }}" class="btn btn-link">
+							Ver
+						</a>
+					</td>
+					<td width="20px">
+						<a href="{{ route('products.edit', $product->id) }}" class="btn btn-link">
 							Editar
 						</a>
 					</td>
